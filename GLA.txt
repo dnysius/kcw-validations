@@ -1,0 +1,7 @@
+accountNumber#|#accountName#|#accountType
+10000#|#Cash#|#B
+20001#|#Account pay#|#B
+30000#|#Receivables#|#B
+40000#|#Tax#|#P
+50000#|#Retained#|#P
+60000#|#Salary#|#P
