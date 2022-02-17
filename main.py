@@ -1,6 +1,5 @@
 import pandas
 import numpy as np
-pandas.set_option("display.precision", 2)
 gla = pandas.read_csv('GLA.txt', sep="#\|#", engine="python")
 glab = pandas.read_csv('GLAB.txt', sep="#\|#", engine="python")
 jet = pandas.read_csv('JET.txt', sep="#\|#", engine="python")
@@ -44,8 +43,13 @@ for je in roll.index:
         roll.loc[je,'JEsummary']=0.00
     else:
         pass
-
+    
+roll = roll.round(decimals=2)
 roll['calcClosing']=roll.apply(lambda row: row[2]+row.JEsummary, axis=1)
 roll = roll.loc[:, roll.columns!='JEsummary']
 roll['difference']=roll.apply(lambda row: row[3]-row[4], axis=1)
+roll = roll.round(decimals=2)
 print(roll)
+
+roll.to_excel(r'completeness.xlsx', index=False)
+# pbpython.com/improve-pandas-excel-output.html
